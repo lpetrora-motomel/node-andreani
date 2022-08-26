@@ -1,6 +1,6 @@
 # Andreani Shipping Library
 
-En esta librería se ofrecen interfaces y métodos que faciliten el uso de la API de Andreani.
+En esta librería se ofrecen interfaces y métodos que faciliten el uso de la API de Andreani. Se corrigió el bug para la descarga de etiquetas.
 
 ## Instalación
 
@@ -27,4 +27,10 @@ const andreani = new Andreani({
     production_url: "https://apis.andreani.com",
   },
 });
+
+//.....
+
+
+await andreani.obtenerTrazas(trackingNumber);
+
 ```
