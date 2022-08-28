@@ -5,7 +5,7 @@ En esta librería se ofrecen interfaces y métodos que faciliten el uso de la AP
 ## Instalación
 
 ```
-npm install --save node-andreani
+npm install --save node-andreani-api
 ```
 
 ## Uso
