@@ -1,6 +1,6 @@
 {
-  "name": "node-andreani",
-  "version": "1.0.2",
+  "name": "node-andreani-api",
+  "version": "1.1.0",
   "description": "Package to interact with Andreani's API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/byeze/node-andreani.git"
+    "url": "git+https://github.com/lpetrora/node-andreani-api.git"
   },
-  "author": "Ezequiel Calonge",
+  "author": "Leonardo Petrora",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/byeze/node-andreani/issues"
+    "url": "https://github.com/lpetrora/node-andreani-api/issues"
   },
-  "homepage": "https://github.com/byeze/node-andreani#readme",
+  "homepage": "https://github.com/lpetrora/node-andreani-api.git#readme",
   "devDependencies": {
     "@types/chai": "^4.2.14",
     "@types/mocha": "^8.0.3",
