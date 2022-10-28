@@ -6,6 +6,8 @@ import { NuevaOrden, Orden } from "./models/ordenes.model";
 import { Provincia } from "./models/provincias.model";
 import { SucursalCompletoV2 } from "./models/sucursales.model";
 import { Credentials } from "./models/credentials.model";
+import { FiltroLocalidades } from "./models/filtoLocalidades.model";
+import { Localidades } from "./models/localidades.model";
 
 export class Andreani {
   private CONTRATO_DOMICILIO: string;
@@ -26,6 +28,8 @@ export class Andreani {
   private OBT_ORD_URL = (number: string) => `${this.BASE_URL}/v2/ordenes-de-envio/${number}`;
   private OBT_ETQ_URL = (remito: string) =>
     `${this.BASE_URL}/v2/ordenes-de-envio/${remito}/etiquetas`;
+
+  private BUS_LOC_URL = (params: string) => `${this.BASE_URL}/v1/localidades?${params}`;
 
   private xAuthorizationToken: string = "";
   private get configAuth() {
@@ -111,7 +115,7 @@ export class Andreani {
     const buscaParams: any = params;
     const queryParams = encode(buscaParams);
     return await this.getReq(this.BUS_ENV_URL(queryParams));
-  }
+  }  
 
   private async $obtenerTrazas(numEnvio: string): Promise<TrazaEnvio[]> {
     return await this.getReq(this.OBT_TRS_URL(numEnvio));
@@ -184,5 +188,19 @@ export class Andreani {
   async obtenerEtiqueta(remito: string) {
     if (!this.isLogged) await this.$login();
     return await this.$obtenerEtiqueta(remito);
+  }
+  
+  async buscarLocalidades(filtro: FiltroLocalidades) : Promise<Localidades[]>{
+    if (!this.isLogged) await this.$login();
+    return await this.$buscarLocalidades(filtro);
+  }
+
+  private async $buscarLocalidades(params: FiltroLocalidades): Promise<Localidades[]> {
+    let buscaParams = {...params};
+    if ( buscaParams['codigosPostales'] && Array.isArray(buscaParams['codigosPostales']))
+      buscaParams['codigosPostales']=buscaParams['codigosPostales'].join(',');
+
+    const queryParams = encode(buscaParams);
+    return await this.getReq(this.BUS_LOC_URL(queryParams));
   }
 }
